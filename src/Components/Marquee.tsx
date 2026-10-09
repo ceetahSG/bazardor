@@ -34,7 +34,7 @@ const Marquee = async () => {
     "https://api.api-store.workers.dev/api/bazardor/products",
   );
   const products = await res.json();
-  console.log(products);
+  // console.log(products);
   return (
     <div>
       <MarqueeText duration={15}>
@@ -42,7 +42,7 @@ const Marquee = async () => {
           return (
             <span
               key={product.id}
-              className="flex items-center gap-1 p-2 border border-gray-300"
+              className="flex items-center gap-2 p-2 border border-gray-300"
             >
               <span>{product.categoryIcon}</span>
 
@@ -52,7 +52,7 @@ const Marquee = async () => {
               </span>
 
               {product.change.dir === "up" ? (
-                <span className="text-red-500 flex items-center gap-1">
+                <span className="text-red-500 flex items-baseline gap-2">
                   <span>{product.change.pct}%</span>
                   <IoTriangle />
                 </span>

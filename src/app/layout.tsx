@@ -26,8 +26,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Suspense fallback={<div className="h-24" />}>
           <Navbar />
           <Marquee />
+          {children}
         </Suspense>
-        {children}
       </body>
     </html>
   );

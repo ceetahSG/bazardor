@@ -2,6 +2,8 @@ import Image from "next/image";
 import React from "react";
 import logo from "../assets/logo-icon.png";
 import { Button } from "@heroui/react/button";
+import { connection } from "next/server";
+import Link from "next/link";
 export interface Category {
   id: string;
   slug: string;
@@ -14,7 +16,8 @@ const Navbar = async () => {
     "https://api.api-store.workers.dev/api/bazardor/categories",
   );
   const categories = await res.json();
-  console.log(categories);
+
+  await connection();
 
   const date = new Date();
   const formatedDate = date.toLocaleDateString("bn-BD", {
@@ -26,7 +29,11 @@ const Navbar = async () => {
         <div className="flex items-center gap-4 p-4">
           <Image src={logo} alt="Logo" width={50} height={50} />
           <div>
-            <h2 className="text-3xl font-bold">বাজার দর</h2>
+            <Link href="/">
+              {" "}
+              <h2 className="text-3xl font-bold">বাজার দর</h2>
+            </Link>
+
             <p>{formatedDate}</p>
           </div>
         </div>
@@ -42,10 +49,12 @@ const Navbar = async () => {
       <div>
         <ul className="flex gap-8 overflow-x-auto whitespace-nowrap p-4">
           {categories.map((category: Category) => (
-            <li key={category.id}>
-              {category.icon && <span>{category.icon}</span>}
-              <span>{category.nameBn}</span>
-            </li>
+            <Link href={`/category/${category.slug}`} key={category.id}>
+              <li key={category.id}>
+                {category.icon && <span>{category.icon}</span>}
+                <span>{category.nameBn}</span>
+              </li>
+            </Link>
           ))}
         </ul>
       </div>
