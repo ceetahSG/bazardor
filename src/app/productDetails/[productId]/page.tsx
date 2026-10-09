@@ -97,7 +97,15 @@ const ProductDetailsPage = async ({
                 className="rounded-xl border border-gray-200 bg-gray-50 p-4"
               >
                 <p className="text-sm text-gray-600">{label}</p>
-                <p className="mt-1 text-2xl font-bold text-gray-900">
+                <p
+                  className={`mt-1 text-2xl font-bold ${
+                    label === "সর্বনিম্ন দাম"
+                      ? "text-green-600"
+                      : label === "সর্বাধিক দাম"
+                        ? "text-red-600"
+                        : "text-gray-900"
+                  }`}
+                >
                   {price} <span className="text-sm font-normal">টাকা</span>
                 </p>
                 <p className="mt-1 text-xs text-gray-500">{description}</p>
