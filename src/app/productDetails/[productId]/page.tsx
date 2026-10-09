@@ -65,7 +65,8 @@ const ProductDetailsPage = async ({
                 "সর্বনিম্ন দাম",
 
                 product.markets.reduce(
-                  (min, market) => Math.min(min, market.min),
+                  (min: number, market: { min: number }) =>
+                    Math.min(min, market.min),
                   Infinity,
                 ),
                 "সবচেয়ে কম দামের বাজার",
@@ -73,7 +74,8 @@ const ProductDetailsPage = async ({
               [
                 "সর্বাধিক দাম",
                 product.markets.reduce(
-                  (max, market) => Math.max(max, market.max),
+                  (max: number, market: { max: number }) =>
+                    Math.max(max, market.max),
                   -Infinity,
                 ),
                 "সবচেয়ে বেশি দামের বাজার",
@@ -82,7 +84,8 @@ const ProductDetailsPage = async ({
                 "গড় দাম",
                 Math.round(
                   product.markets.reduce(
-                    (sum, market) => sum + (market.min + market.max) / 2,
+                    (sum: number, market: { min: number; max: number }) =>
+                      sum + (market.min + market.max) / 2,
                     0,
                   ) / product.markets.length,
                 ),
