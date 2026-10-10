@@ -11,6 +11,7 @@ import {
   TextField,
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { FormEvent } from "react";
 
@@ -33,6 +34,19 @@ const SignUpPage = () => {
       console.error("Sign Up Error:", error);
     }
   };
+  const handleSignUpWithGoogle = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
+  };
+  const handleSignUpWithGitHub = async () => {
+    await authClient.signIn.social({
+      provider: "github",
+      callbackURL: "/",
+    });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center gap-4 bg-gray-100">
       <div className="flex flex-col items-center gap-2 mt-10">
@@ -130,6 +144,8 @@ const SignUpPage = () => {
           </div>
           <div className="flex gap-2 w-full">
             <Button
+              type="button"
+              onClick={handleSignUpWithGoogle}
               className="w-full rounded-lg border bg-white border-gray-300 text-black"
               variant="tertiary"
             >
@@ -137,6 +153,8 @@ const SignUpPage = () => {
               Google দিয়ে চালিয়ে যান
             </Button>
             <Button
+              type="button"
+              onClick={handleSignUpWithGitHub}
               className="w-full rounded-lg bg-white border border-gray-300 text-black"
               variant="tertiary"
             >
@@ -147,10 +165,14 @@ const SignUpPage = () => {
         </Form>
         <h2 className="text-sm text-gray-700">
           অ্যাকাউন্ট আছে?
-          <span className="text-green-600"> সাইন ইন করুন</span>
+          <span className="text-green-600">
+            <Link href="/signin"> সাইন ইন করুন</Link>
+          </span>
         </h2>
       </div>
-      <h2 className="text-sm text-gray-700">← হোম পেজে ফিরে যান</h2>
+      <h2 className="text-sm text-gray-700">
+        <Link href="/">← হোম পেজে ফিরে যান</Link>
+      </h2>
     </div>
   );
 };

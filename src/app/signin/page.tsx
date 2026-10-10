@@ -33,6 +33,18 @@ const SignInPage = () => {
       console.error("Sign In Error:", error);
     }
   };
+  const handleSignInWithGoogle = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
+  const handleSignInWithGitHub = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github",
+    });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center gap-4 bg-gray-100">
       <div className="flex flex-col items-center gap-2 mt-10">
@@ -94,6 +106,7 @@ const SignInPage = () => {
           </div>
           <div className="flex gap-2 w-full">
             <Button
+              onClick={handleSignInWithGoogle}
               className="w-full rounded-lg border bg-white border-gray-300 text-black"
               variant="tertiary"
             >
@@ -101,6 +114,7 @@ const SignInPage = () => {
               Google দিয়ে চালিয়ে যান
             </Button>
             <Button
+              onClick={handleSignInWithGitHub}
               className="w-full rounded-lg bg-white border border-gray-300 text-black"
               variant="tertiary"
             >
