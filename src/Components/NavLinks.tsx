@@ -5,12 +5,15 @@ import Link from "next/link";
 import React from "react";
 import { Dropdown, Label } from "@heroui/react";
 import { GoTriangleDown } from "react-icons/go";
+import { toast } from "react-toastify";
+
 const NavLinks = () => {
   const { data: session } = authClient.useSession();
   const userData = session?.user;
 
   const user = session?.user;
   const handlesSignout = () => {
+    toast.success("সাইন আউট সফল হয়েছে। আবার দেখা হবে!");
     authClient.signOut();
   };
   //   console.log("User:", user);

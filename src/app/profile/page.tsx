@@ -5,6 +5,7 @@ import { Button, Form, Input, Label, TextField } from "@heroui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
   const router = useRouter();
@@ -24,7 +25,9 @@ const ProfilePage = () => {
     });
 
     if (updateError) {
-      setError(updateError.message || "তথ্য আপডেট করা যায়নি।");
+      toast.error("আপডেট করতে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।");
+    } else {
+      toast.success("আপডেট সফল হয়েছে!");
     }
 
     setIsUpdating(false);
@@ -33,6 +36,7 @@ const ProfilePage = () => {
   const handleSignOut = async () => {
     await authClient.signOut();
     router.push("/signin");
+    toast.success("সাইন আউট সফল হয়েছে। আবার দেখা হবে!");
   };
 
   if (isPending) {

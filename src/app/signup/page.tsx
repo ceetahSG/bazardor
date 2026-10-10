@@ -12,10 +12,13 @@ import {
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { FormEvent } from "react";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
+  const router = useRouter();
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -28,10 +31,10 @@ const SignUpPage = () => {
       callbackURL: "/",
     });
     if (data) {
-      redirect("/");
-      console.log("Sign Up Successful:", data);
+      toast.success("সাইন আপ সফল হয়েছে! স্বাগতম।");
+      router.push("/");
     } else {
-      console.error("Sign Up Error:", error);
+      toast.error("সাইন আপ করতে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।");
     }
   };
   const handleSignUpWithGoogle = async () => {
@@ -48,7 +51,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 bg-[#f1f7f2]">
+    <div className="flex flex-col items-center justify-center gap-4 bg-[#f1f7f2] min-h-200">
       <div className="flex flex-col items-center gap-2 mt-10">
         <h2 className="text-2xl font-bold">অ্যাকাউন্ট তৈরি করুন</h2>
         <p className="text-sm text-gray-700">

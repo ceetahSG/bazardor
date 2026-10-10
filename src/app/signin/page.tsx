@@ -12,10 +12,13 @@ import {
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { FormEvent } from "react";
+import { toast } from "react-toastify";
 
 const SignInPage = () => {
+  const router = useRouter();
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -28,10 +31,10 @@ const SignInPage = () => {
       callbackURL: "/",
     });
     if (data) {
-      redirect("/");
-      console.log("Sign in Successful:", data);
+      toast.success("সাইন ইন সফল হয়েছে! স্বাগতম।");
+      router.push("/");
     } else {
-      console.error("Sign In Error:", error);
+      toast.error("সাইন ইন করতে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।");
     }
   };
   const handleSignInWithGoogle = async () => {

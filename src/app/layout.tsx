@@ -5,6 +5,7 @@ import Navbar from "@/Components/Navbar";
 import { Suspense } from "react";
 import Marquee from "@/Components/Marquee";
 import Footer from "@/Components/Footer";
+import ToastProvider from "@/Components/ToastProvider";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   variable: "--font-noto-serif-bengali",
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth`}
     >
       <body className="min-h-full flex flex-col">
+        <ToastProvider />
         <Suspense fallback={<div className="h-24" />}>
           <Navbar />
           <Marquee />
