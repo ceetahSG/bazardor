@@ -16,8 +16,8 @@ const ProductDetailsPage = async ({
   const product = await res.json();
   //   console.log(product);
   return (
-    <div className="min-h-full bg-[#f1f7f2] px-4 py-6 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-6xl">
+    <div className="min-h-screen bg-[#f1f7f2] px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-6xl ">
         <div className="flex flex-col justify-between gap-6 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:p-7">
           <div className="flex min-w-0 items-center gap-3 sm:gap-4">
             <span className="shrink-0 rounded-xl bg-gray-100 p-2 text-4xl sm:p-3 sm:text-5xl">
@@ -42,9 +42,7 @@ const ProductDetailsPage = async ({
           <div className="flex w-full flex-col items-center rounded-xl border border-gray-200 bg-gray-50 p-4 sm:min-w-40 sm:w-auto">
             <h2 className="text-gray-700">আজকের দাম</h2>
             <h1 className="text-4xl font-bold">{formatPrice(product.today)}</h1>
-            <p className="text-gray-700">
-              টাকা / {formatUnit(product.unit)}
-            </p>
+            <p className="text-gray-700">টাকা / {formatUnit(product.unit)}</p>
             <div>
               {product.change.dir === "up" ? (
                 <span className="flex items-baseline gap-2 text-red-500">
@@ -160,9 +158,8 @@ const ProductDetailsPage = async ({
                         {formatPrice(market.max)} টাকা
                       </td>
                       <td className="px-4 py-3 text-right font-semibold text-gray-900">
-                        {formatPrice(
-                          Math.round((market.min + market.max) / 2),
-                        )} টাকা
+                        {formatPrice(Math.round((market.min + market.max) / 2))}{" "}
+                        টাকা
                       </td>
                     </tr>
                   ),

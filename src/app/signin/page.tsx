@@ -2,7 +2,6 @@
 import { authClient } from "@/lib/auth-client";
 import {
   Button,
-  Description,
   FieldError,
   Form,
   Input,
@@ -50,8 +49,8 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-4 bg-[#f1f7f2] px-4 py-8 sm:px-6">
-      <div className="flex w-full max-w-xl flex-col items-center gap-2 text-center">
+    <div className="flex w-full min-h-screen flex-col items-center  gap-4 bg-[#f1f7f2] px-4 sm:px-6">
+      <div className="flex w-full max-w-xl flex-col items-center gap-2 text-center pt-10">
         <h2 className="text-2xl font-bold sm:text-3xl">সাইন ইন</h2>
         <p className="text-sm text-gray-700">
           বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।

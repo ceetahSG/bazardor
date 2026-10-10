@@ -62,7 +62,7 @@ const ProfilePage = () => {
   const currentName = name ?? user.name ?? "";
 
   return (
-    <main className="min-h-full bg-[#f1f7f2] px-4 py-8 text-[#18221b] sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[#f1f7f2] px-4 py-8 text-[#18221b] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-4xl">
         <header>
           <h1 className="text-2xl font-bold sm:text-3xl">আমার প্রোফাইল</h1>

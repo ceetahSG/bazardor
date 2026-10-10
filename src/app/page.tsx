@@ -27,8 +27,8 @@ export default async function Home() {
     (a: Product, b: Product) => a.change.pct - b.change.pct,
   );
   return (
-    <div className="bg-gray-100">
-      <div className="container mx-auto my-5 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#f1f7f2]">
+      <div className="container mx-auto  px-4 p-10 sm:px-6 lg:px-8">
         <div>
           <Hero />
           <div className="flex gap-2 items-center">
@@ -56,7 +56,7 @@ export default async function Home() {
             মোট {products.length} টি পণ্য দেখানো হচ্ছে
           </p>
 
-          <div className="grid grid-cols-1 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
+          <div className="grid grid-cols-1 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4 ">
             {products.map((product: Product) => (
               <ProductCard key={product.id} product={product} />
             ))}
