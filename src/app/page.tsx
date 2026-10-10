@@ -3,16 +3,14 @@ import Hero from "@/Components/Hero";
 import IncreasedProduct from "@/Components/IncreasedProduct";
 import { Product } from "@/Components/Marquee";
 import ProductCard from "@/Components/ProductCard";
+import { fetchBazarDor } from "@/lib/api";
 import { IoTriangle } from "react-icons/io5";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
 
 export default async function Home() {
-  const result = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
-    {
-      next: { revalidate: 60 },
-    },
-  );
+  const result = await fetchBazarDor("/products", {
+    next: { revalidate: 60 },
+  });
   const products = await result.json();
 
   // console.log(products);

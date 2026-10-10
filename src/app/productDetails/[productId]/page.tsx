@@ -2,6 +2,7 @@ import React from "react";
 import { IoTriangle } from "react-icons/io5";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
 import { formatPrice, formatUnit } from "@/lib/formatters";
+import { fetchBazarDor } from "@/lib/api";
 
 const ProductDetailsPage = async ({
   params,
@@ -9,10 +10,9 @@ const ProductDetailsPage = async ({
   params: { productId: string };
 }) => {
   const { productId } = await params;
-  const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products/${productId}`,
-    { next: { revalidate: 60 } },
-  );
+  const res = await fetchBazarDor(`/products/${productId}`, {
+    next: { revalidate: 60 },
+  });
   const product = await res.json();
   //   console.log(product);
   return (

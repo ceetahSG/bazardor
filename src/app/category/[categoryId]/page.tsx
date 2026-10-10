@@ -1,20 +1,19 @@
 import SortedProductList from "@/Components/SortedProductList";
 import React from "react";
+import { fetchBazarDor } from "@/lib/api";
 
 const CategoryPage = async ({ params }: { params: { categoryId: string } }) => {
   const { categoryId } = await params;
   //   console.log(categoryId);
-  const categoryRes = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/categories/${categoryId}`,
-    { next: { revalidate: 60 } },
-  );
+  const categoryRes = await fetchBazarDor(`/categories/${categoryId}`, {
+    next: { revalidate: 60 },
+  });
   const category = await categoryRes.json();
   //   console.log(category);
 
-  const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products?category=${categoryId}`,
-    { next: { revalidate: 60 } },
-  );
+  const res = await fetchBazarDor(`/products?category=${categoryId}`, {
+    next: { revalidate: 60 },
+  });
   const products = await res.json();
   //   console.log(products);
 

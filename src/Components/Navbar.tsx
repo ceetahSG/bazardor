@@ -6,6 +6,7 @@ import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import NavLinks from "./NavLinks";
 import CurrentDate from "./CurrentDate";
+import { fetchBazarDor } from "@/lib/api";
 export interface Category {
   id: string;
   slug: string;
@@ -14,10 +15,7 @@ export interface Category {
 }
 
 const Navbar = async () => {
-  const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/categories",
-    { next: { revalidate: 60 } },
-  );
+  const res = await fetchBazarDor("/categories", { next: { revalidate: 60 } });
   const categories = await res.json();
 
   return (

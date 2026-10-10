@@ -3,6 +3,7 @@ import { IoTriangle } from "react-icons/io5";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
 import MarqueeText from "react-marquee-text";
 import { formatPrice, formatUnit } from "@/lib/formatters";
+import { fetchBazarDor } from "@/lib/api";
 export interface Product {
   id: number;
   slug: string;
@@ -31,10 +32,7 @@ export interface Product {
 }
 
 const Marquee = async () => {
-  const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
-    { next: { revalidate: 60 } },
-  );
+  const res = await fetchBazarDor("/products", { next: { revalidate: 60 } });
   const products = await res.json();
   // console.log(products);
   return (
