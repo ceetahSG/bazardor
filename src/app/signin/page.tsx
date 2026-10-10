@@ -11,6 +11,7 @@ import {
   TextField,
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { FormEvent } from "react";
 
@@ -46,7 +47,7 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 bg-gray-100">
+    <div className="flex flex-col items-center justify-center gap-4 bg-[#f1f7f2]">
       <div className="flex flex-col items-center gap-2 mt-10">
         <h2 className="text-2xl font-bold">সাইন ইন</h2>
         <p className="text-sm text-gray-700">
@@ -125,10 +126,14 @@ const SignInPage = () => {
         </Form>
         <h2 className="text-sm text-gray-700">
           অ্যাকাউন্ট নেই?
-          <span className="text-green-600"> সাইন আপ করুন</span>
+          <span className="text-green-600">
+            <Link href="/signup"> সাইন আপ করুন</Link>
+          </span>
         </h2>
       </div>
-      <h2 className="text-sm text-gray-700">← হোম পেজে ফিরে যান</h2>
+      <Link href="/">
+        <h2 className="text-sm text-gray-700">← হোম পেজে ফিরে যান</h2>
+      </Link>
     </div>
   );
 };

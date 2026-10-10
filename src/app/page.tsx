@@ -10,7 +10,7 @@ export default async function Home() {
   const result = await fetch(
     "https://api.api-store.workers.dev/api/bazardor/products",
     {
-      cache: "no-store",
+      next: { revalidate: 60 },
     },
   );
   const products = await result.json();
@@ -49,7 +49,12 @@ export default async function Home() {
             products={sortedDecreasedPriceProduct.slice(0, 6)}
           />
 
-          <h2 className="text-2xl font-bold mt-10">সব পণ্য</h2>
+          <h2
+            id="AllProducts"
+            className="text-2xl font-bold mt-10 scroll-mt-4 scroll-behavior-smooth "
+          >
+            সব পণ্য
+          </h2>
           <p className="text-gray-700">
             মোট {products.length} টি পণ্য দেখানো হচ্ছে
           </p>

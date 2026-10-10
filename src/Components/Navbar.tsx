@@ -2,10 +2,10 @@ import Image from "next/image";
 import React from "react";
 import logo from "../assets/logo-icon.png";
 import { Button } from "@heroui/react/button";
-import { connection } from "next/server";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import NavLinks from "./NavLinks";
+import CurrentDate from "./CurrentDate";
 export interface Category {
   id: string;
   slug: string;
@@ -16,15 +16,10 @@ export interface Category {
 const Navbar = async () => {
   const res = await fetch(
     "https://api.api-store.workers.dev/api/bazardor/categories",
+    { next: { revalidate: 60 } },
   );
   const categories = await res.json();
 
-  await connection();
-
-  const date = new Date();
-  const formatedDate = date.toLocaleDateString("bn-BD", {
-    dateStyle: "full",
-  });
   return (
     <div className="container mx-auto">
       <div className="flex items-center gap-4 p-4 justify-between">
@@ -36,7 +31,9 @@ const Navbar = async () => {
               <h2 className="text-3xl font-bold">বাজার দর</h2>
             </Link>
 
-            <p>{formatedDate}</p>
+            <p>
+              <CurrentDate />
+            </p>
           </div>
         </div>
         <NavLinks />

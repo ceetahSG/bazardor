@@ -6,18 +6,20 @@ const CategoryPage = async ({ params }: { params: { categoryId: string } }) => {
   //   console.log(categoryId);
   const categoryRes = await fetch(
     `https://api.api-store.workers.dev/api/bazardor/categories/${categoryId}`,
+    { next: { revalidate: 60 } },
   );
   const category = await categoryRes.json();
   //   console.log(category);
 
   const res = await fetch(
     `https://api.api-store.workers.dev/api/bazardor/products?category=${categoryId}`,
+    { next: { revalidate: 60 } },
   );
   const products = await res.json();
   //   console.log(products);
 
   return (
-    <div className="bg-gray-100 ">
+    <div className="bg-[#f1f7f2] ">
       <div className="container mx-auto my-5 ">
         <div className="flex items-center gap-2 p-6 border border-gray-300 rounded-2xl mb-5 bg-white">
           <span className="text-4xl">{category.icon}</span>

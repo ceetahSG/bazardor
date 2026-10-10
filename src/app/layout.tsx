@@ -20,7 +20,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-theme="light"
-      className={`${notoSerifBengali.className}    h-full antialiased`}
+      className={`${notoSerifBengali.className}    h-full antialiased scroll-smooth
+      data-scroll-behavior="smooth`}
     >
       <body className="min-h-full flex flex-col">
         <Suspense fallback={<div className="h-24" />}>

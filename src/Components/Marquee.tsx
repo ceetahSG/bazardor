@@ -32,6 +32,7 @@ export interface Product {
 const Marquee = async () => {
   const res = await fetch(
     "https://api.api-store.workers.dev/api/bazardor/products",
+    { next: { revalidate: 60 } },
   );
   const products = await res.json();
   // console.log(products);

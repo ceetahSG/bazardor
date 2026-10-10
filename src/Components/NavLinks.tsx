@@ -48,7 +48,9 @@ const NavLinks = () => {
                 </Dropdown.Item>
 
                 <Dropdown.Item id="edit-file" textValue="Edit file">
-                  <Label>👤 আমার প্রোফাইল</Label>
+                  <Link href="/profile">
+                    <Label>👤 আমার প্রোফাইল</Label>
+                  </Link>
                 </Dropdown.Item>
                 <Dropdown.Item
                   id="delete-file"

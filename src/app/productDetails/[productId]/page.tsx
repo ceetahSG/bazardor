@@ -10,11 +10,12 @@ const ProductDetailsPage = async ({
   const { productId } = await params;
   const res = await fetch(
     `https://api.api-store.workers.dev/api/bazardor/products/${productId}`,
+    { next: { revalidate: 60 } },
   );
   const product = await res.json();
   //   console.log(product);
   return (
-    <div className="min-h-screen bg-[#f1f6f2] px-4 py-6 sm:px-6">
+    <div className="min-h-screen bg-[#f1f7f2] px-4 py-6 sm:px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col justify-between gap-6 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:p-7">
           <div className="flex items-center gap-4">
