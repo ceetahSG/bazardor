@@ -4,6 +4,8 @@ import logo from "../assets/logo-icon.png";
 import { Button } from "@heroui/react/button";
 import { connection } from "next/server";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import NavLinks from "./NavLinks";
 export interface Category {
   id: string;
   slug: string;
@@ -37,14 +39,7 @@ const Navbar = async () => {
             <p>{formatedDate}</p>
           </div>
         </div>
-        <div className="flex items-center gap-5">
-          <Button variant="ghost" className="font-bold text-xl">
-            সাইন ইন
-          </Button>
-          <Button className="bg-green-700 rounded-xl text-xl font-bold p-6">
-            সাইন আপ
-          </Button>
-        </div>
+        <NavLinks />
       </div>
       <div>
         <ul className="flex gap-8 overflow-x-auto whitespace-nowrap p-4">
