@@ -1,6 +1,7 @@
 import React from "react";
 import { IoTriangle } from "react-icons/io5";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
+import { formatPrice, formatUnit } from "@/lib/formatters";
 
 const ProductDetailsPage = async ({
   params,
@@ -15,33 +16,35 @@ const ProductDetailsPage = async ({
   const product = await res.json();
   //   console.log(product);
   return (
-    <div className="min-h-screen bg-[#f1f7f2] px-4 py-6 sm:px-6">
+    <div className="min-h-full bg-[#f1f7f2] px-4 py-6 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col justify-between gap-6 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:p-7">
-          <div className="flex items-center gap-4">
-            <span className="rounded-xl bg-gray-100 p-3 text-5xl">
+          <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+            <span className="shrink-0 rounded-xl bg-gray-100 p-2 text-4xl sm:p-3 sm:text-5xl">
               {product.categoryIcon}
             </span>
             <div>
-              <h2 className="text-2xl font-bold sm:text-3xl">
+              <h2 className="text-xl font-bold sm:text-3xl">
                 {product.nameBn}
               </h2>
               <p className="text-base text-gray-600 sm:text-lg">
-                প্রতি {product.unit} {product.categoryNameBn}
+                প্রতি {formatUnit(product.unit)} {product.categoryNameBn}
               </p>
               <p className="mt-1 text-sm text-gray-700 sm:text-base">
                 গতকালের তুলনায় আজ দাম{" "}
                 <span>
                   {product.change.dir === "up" ? "বেড়েছে · " : "কমেছে · "}
                 </span>
-                {Math.abs(product.today - product.yesterday)} টাকা
+                {formatPrice(Math.abs(product.today - product.yesterday))} টাকা
               </p>
             </div>
           </div>
-          <div className="flex min-w-40 flex-col items-center rounded-xl border border-gray-200 bg-gray-50 p-4">
+          <div className="flex w-full flex-col items-center rounded-xl border border-gray-200 bg-gray-50 p-4 sm:min-w-40 sm:w-auto">
             <h2 className="text-gray-700">আজকের দাম</h2>
-            <h1 className="text-4xl font-bold">{product.today}</h1>
-            <p className="text-gray-700">টাকা / {product.unit}</p>
+            <h1 className="text-4xl font-bold">{formatPrice(product.today)}</h1>
+            <p className="text-gray-700">
+              টাকা / {formatUnit(product.unit)}
+            </p>
             <div>
               {product.change.dir === "up" ? (
                 <span className="flex items-baseline gap-2 text-red-500">
@@ -58,7 +61,7 @@ const ProductDetailsPage = async ({
           </div>
         </div>
 
-        <section className="mt-6 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-7">
+        <section className="mt-6 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-7">
           <h2 className="text-xl font-bold text-gray-900">দামের সারসংক্ষেপ</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             {[
@@ -90,7 +93,7 @@ const ProductDetailsPage = async ({
                     0,
                   ) / product.markets.length,
                 ),
-                `প্রতি ${product.unit} হিসাবে`,
+                `প্রতি ${formatUnit(product.unit)} হিসাবে`,
               ],
             ].map(([label, price, description]) => (
               <div
@@ -107,7 +110,8 @@ const ProductDetailsPage = async ({
                         : "text-gray-900"
                   }`}
                 >
-                  {price} <span className="text-sm font-normal">টাকা</span>
+                  {formatPrice(Number(price))}{" "}
+                  <span className="text-sm font-normal">টাকা</span>
                 </p>
                 <p className="mt-1 text-xs text-gray-500">{description}</p>
               </div>
@@ -150,13 +154,15 @@ const ProductDetailsPage = async ({
                         {market.division}
                       </td>
                       <td className="px-4 py-3 text-right text-gray-700">
-                        {market.min} টাকা
+                        {formatPrice(market.min)} টাকা
                       </td>
                       <td className="px-4 py-3 text-right text-gray-700">
-                        {market.max} টাকা
+                        {formatPrice(market.max)} টাকা
                       </td>
                       <td className="px-4 py-3 text-right font-semibold text-gray-900">
-                        {Math.round((market.min + market.max) / 2)} টাকা
+                        {formatPrice(
+                          Math.round((market.min + market.max) / 2),
+                        )} টাকা
                       </td>
                     </tr>
                   ),

@@ -18,16 +18,16 @@ const NavLinks = () => {
   };
   //   console.log("User:", user);
   return (
-    <div className="flex items-center gap-5">
+    <div className="flex items-center gap-2 sm:gap-5">
       {!user ? (
         <div>
           <Link href="/signin">
-            <Button variant="ghost" className="font-bold text-xl">
+            <Button variant="ghost" className="px-2 text-sm font-bold sm:px-3 sm:text-xl">
               সাইন ইন
             </Button>
           </Link>
           <Link href="/signup">
-            <Button className="bg-green-700 rounded-xl text-xl font-bold p-6">
+            <Button className="bg-green-700 rounded-xl px-3 py-2 text-sm font-bold sm:p-6 sm:text-xl">
               সাইন আপ
             </Button>
           </Link>

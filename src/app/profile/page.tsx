@@ -41,7 +41,7 @@ const ProfilePage = () => {
 
   if (isPending) {
     return (
-      <main className="bg-[#f1f7f2] px-5 py-8">
+      <main className="bg-[#f1f7f2] px-4 py-8 sm:px-6">
         <div className="mx-auto max-w-4xl animate-pulse">
           <div className="h-8 w-48 rounded bg-gray-200" />
           <div className="mt-8 h-28 rounded-2xl bg-white" />
@@ -62,8 +62,8 @@ const ProfilePage = () => {
   const currentName = name ?? user.name ?? "";
 
   return (
-    <main className="  px-5 py-8 bg-[#f1f7f2]  text-[#18221b] sm:px-8 min-h-165">
-      <div className="mx-auto max-w-4xl ">
+    <main className="min-h-full bg-[#f1f7f2] px-4 py-8 text-[#18221b] sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl">
         <header>
           <h1 className="text-2xl font-bold sm:text-3xl">আমার প্রোফাইল</h1>
           <p className="mt-1 text-sm text-gray-600">
@@ -71,7 +71,7 @@ const ProfilePage = () => {
           </p>
         </header>
 
-        <section className="mt-7 flex flex-col gap-5 rounded-2xl border border-[#dce5de] bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:px-7">
+        <section className="mt-7 flex flex-col gap-5 rounded-2xl border border-[#dce5de] bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-6 sm:px-7">
           <div className="flex items-center gap-4">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#dcefe1] text-2xl font-bold text-[#087f3f]">
               {initials}
@@ -87,7 +87,7 @@ const ProfilePage = () => {
             type="button"
             variant="tertiary"
             onClick={handleSignOut}
-            className="w-fit rounded-lg border border-red-400 bg-white px-5 py-2 font-semibold text-red-500"
+            className="w-full rounded-lg border border-red-400 bg-white px-5 py-2 font-semibold text-red-500 sm:w-fit"
           >
             ↩ সাইন আউট
           </Button>

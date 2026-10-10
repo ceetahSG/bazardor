@@ -28,10 +28,9 @@ export default async function Home() {
   const sortedDecreasedPriceProduct = decreasedPriceProduct.sort(
     (a: Product, b: Product) => a.change.pct - b.change.pct,
   );
-  console.log(increasedPriceProduct);
   return (
-    <div className="bg-gray-100 ">
-      <div className="container mx-auto my-5 ">
+    <div className="bg-gray-100">
+      <div className="container mx-auto my-5 px-4 sm:px-6 lg:px-8">
         <div>
           <Hero />
           <div className="flex gap-2 items-center">
@@ -51,7 +50,7 @@ export default async function Home() {
 
           <h2
             id="AllProducts"
-            className="text-2xl font-bold mt-10 scroll-mt-4 scroll-behavior-smooth "
+            className="text-2xl font-bold mt-10 scroll-mt-4 scroll-behavior-smooth"
           >
             সব পণ্য
           </h2>
@@ -59,7 +58,7 @@ export default async function Home() {
             মোট {products.length} টি পণ্য দেখানো হচ্ছে
           </p>
 
-          <div className="grid grid-cols-3 gap-4 mt-4">
+          <div className="grid grid-cols-1 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
             {products.map((product: Product) => (
               <ProductCard key={product.id} product={product} />
             ))}

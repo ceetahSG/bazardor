@@ -2,6 +2,7 @@ import React from "react";
 import { IoTriangle } from "react-icons/io5";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
 import MarqueeText from "react-marquee-text";
+import { formatPrice, formatUnit } from "@/lib/formatters";
 export interface Product {
   id: number;
   slug: string;
@@ -37,7 +38,7 @@ const Marquee = async () => {
   const products = await res.json();
   // console.log(products);
   return (
-    <div>
+    <div className="w-full overflow-hidden">
       <MarqueeText duration={15}>
         {products.map((product: Product) => {
           return (
@@ -49,7 +50,7 @@ const Marquee = async () => {
 
               <span>{product.nameBn}</span>
               <span>
-                {product.today} টাকা/{product.unit}
+                {formatPrice(product.today)} টাকা/{formatUnit(product.unit)}
               </span>
 
               {product.change.dir === "up" ? (

@@ -50,15 +50,15 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 bg-[#f1f7f2] min-h-165">
-      <div className="flex flex-col items-center gap-2 mt-10">
-        <h2 className="text-2xl font-bold">সাইন ইন</h2>
+    <div className="flex w-full flex-col items-center justify-center gap-4 bg-[#f1f7f2] px-4 py-8 sm:px-6">
+      <div className="flex w-full max-w-xl flex-col items-center gap-2 text-center">
+        <h2 className="text-2xl font-bold sm:text-3xl">সাইন ইন</h2>
         <p className="text-sm text-gray-700">
           বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।
         </p>
       </div>
-      <div className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center gap-4">
-        <Form className="flex w-96 flex-col gap-4" onSubmit={handleSubmit}>
+      <div className="w-full max-w-lg bg-white p-4 sm:p-8 rounded-lg shadow-md flex flex-col items-center gap-4">
+        <Form className="flex w-full flex-col gap-4" onSubmit={handleSubmit}>
           <TextField
             isRequired
             name="email"
@@ -98,7 +98,7 @@ const SignInPage = () => {
           </TextField>
 
           <Button
-            className="bg-green-600 rounded-lg w-100 p-6 font-bold"
+            className="bg-green-600 rounded-lg w-full p-4 sm:p-6 font-bold"
             type="submit"
           >
             সাইন ইন
@@ -108,7 +108,7 @@ const SignInPage = () => {
             <span className="px-3 text-sm text-default-500">অথবা</span>
             <Separator className="flex-1" />
           </div>
-          <div className="flex gap-2 w-full">
+          <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
             <Button
               onClick={handleSignInWithGoogle}
               className="w-full rounded-lg border bg-white border-gray-300 text-black"

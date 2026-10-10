@@ -24,7 +24,7 @@ const SortedProductList = ({ products }: { products: Product[] }) => {
   return (
     <>
       <div className="border border-gray-300 rounded-2xl mb-5 bg-white flex justify-end">
-        <div className="flex items-center gap-4 p-4 w-fit">
+        <div className="flex w-full items-center justify-between gap-3 p-3 sm:w-fit sm:gap-4 sm:p-4">
           <h2>সাজান</h2>
           <ComboBox
             selectedKey={sortOption}
@@ -37,7 +37,7 @@ const SortedProductList = ({ products }: { products: Product[] }) => {
                 setSortOption(key);
               }
             }}
-            className="w-40"
+            className="w-40 max-w-[60vw]"
           >
             <ComboBox.InputGroup>
               <Input placeholder="ডিফল্ট" />
@@ -62,7 +62,7 @@ const SortedProductList = ({ products }: { products: Product[] }) => {
           </ComboBox>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
         {sortedProducts.map((product) => (
           <div key={product.id}>
             <ProductCard product={product} />
