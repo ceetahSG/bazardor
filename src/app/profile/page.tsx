@@ -37,7 +37,7 @@ const ProfilePage = () => {
 
   if (isPending) {
     return (
-      <main className="min-h-screen bg-white px-5 py-8">
+      <main className="bg-[#f1f7f2] px-5 py-8">
         <div className="mx-auto max-w-4xl animate-pulse">
           <div className="h-8 w-48 rounded bg-gray-200" />
           <div className="mt-8 h-28 rounded-2xl bg-white" />
@@ -58,8 +58,8 @@ const ProfilePage = () => {
   const currentName = name ?? user.name ?? "";
 
   return (
-    <main className="min-h-screen bg-white px-5 py-8 text-[#18221b] sm:px-8">
-      <div className="mx-auto max-w-4xl">
+    <main className="  px-5 py-8 bg-[#f1f7f2]  text-[#18221b] sm:px-8 min-h-165">
+      <div className="mx-auto max-w-4xl ">
         <header>
           <h1 className="text-2xl font-bold sm:text-3xl">আমার প্রোফাইল</h1>
           <p className="mt-1 text-sm text-gray-600">

@@ -30,7 +30,7 @@ export default async function Home() {
   );
   console.log(increasedPriceProduct);
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 ">
       <div className="container mx-auto my-5 ">
         <div>
           <Hero />

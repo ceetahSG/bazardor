@@ -47,7 +47,7 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 bg-[#f1f7f2]">
+    <div className="flex flex-col items-center justify-center gap-4 bg-[#f1f7f2] min-h-165">
       <div className="flex flex-col items-center gap-2 mt-10">
         <h2 className="text-2xl font-bold">সাইন ইন</h2>
         <p className="text-sm text-gray-700">
