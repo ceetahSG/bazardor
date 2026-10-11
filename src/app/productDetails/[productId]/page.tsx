@@ -16,7 +16,7 @@ const ProductDetailsPage = async ({
   const product = await res.json();
   //   console.log(product);
   return (
-    <div className="min-h-screen bg-[#f1f7f2] px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#f1f7f2] px-4 p-5 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-6xl ">
         <div className="flex flex-col justify-between gap-6 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:p-7">
           <div className="flex min-w-0 items-center gap-3 sm:gap-4">

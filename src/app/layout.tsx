@@ -28,11 +28,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-screen flex flex-col">
         <ToastProvider />
-        <Suspense fallback={<div className="h-24" />}>
+        <Suspense fallback={<div className="h-24" aria-hidden="true" />}>
           <Navbar />
-          <Marquee />
-          <main className="flex-1">{children}</main>
         </Suspense>
+        <Suspense fallback={<div className="h-10" aria-hidden="true" />}>
+          <Marquee />
+        </Suspense>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>
