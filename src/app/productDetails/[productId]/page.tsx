@@ -1,7 +1,7 @@
 import React from "react";
 import { IoTriangle } from "react-icons/io5";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
-import { formatPrice, formatUnit } from "@/lib/formatters";
+import { formatPct, formatPrice, formatUnit } from "@/lib/formatters";
 import { fetchBazarDor } from "@/lib/api";
 
 const ProductDetailsPage = async ({
@@ -47,12 +47,12 @@ const ProductDetailsPage = async ({
               {product.change.dir === "up" ? (
                 <span className="flex items-baseline gap-2 text-red-500">
                   <IoTriangle />
-                  <span>{product.change.pct}%</span>
+                  <span>{formatPct(product.change.pct)}%</span>
                 </span>
               ) : (
                 <span className="flex items-center gap-2 text-green-500">
                   <TbTriangleInvertedFilled />
-                  <span>{product.change.pct}%</span>
+                  <span>{formatPct(product.change.pct)}%</span>
                 </span>
               )}
             </div>

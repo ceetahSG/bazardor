@@ -9,3 +9,6 @@ export const formatUnit = (unit: string) => unitLabels[unit] ?? unit;
 
 export const formatPrice = (price: number) =>
   new Intl.NumberFormat("bn-BD").format(price);
+
+export const formatPct = (pct: number) =>
+  new Intl.NumberFormat("bn-BD", {}).format(pct);

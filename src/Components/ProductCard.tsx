@@ -3,7 +3,7 @@ import { Product } from "./Marquee";
 import { IoTriangle } from "react-icons/io5";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
 import Link from "next/link";
-import { formatPrice, formatUnit } from "@/lib/formatters";
+import { formatPct, formatPrice, formatUnit } from "@/lib/formatters";
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
@@ -14,7 +14,9 @@ const ProductCard = ({ product }: { product: Product }) => {
             {product.categoryIcon}
           </span>
           <div className="min-w-0">
-            <h3 className="truncate text-lg sm:text-xl font-bold">{product.nameBn}</h3>
+            <h3 className="truncate text-lg sm:text-xl font-bold">
+              {product.nameBn}
+            </h3>
             <p className="text-sm text-gray-700">
               প্রতি {formatUnit(product.unit)}
             </p>
@@ -33,12 +35,12 @@ const ProductCard = ({ product }: { product: Product }) => {
             {product.change.dir === "up" ? (
               <span className="text-sm sm:text-base text-red-500 flex items-baseline gap-1 sm:gap-2 bg-gray-100 p-2 px-3 rounded-4xl">
                 <IoTriangle />
-                <span>{product.change.pct}%</span>
+                <span>{formatPct(product.change.pct)}%</span>
               </span>
             ) : (
               <span className="text-sm sm:text-base text-green-500 flex items-center gap-1 sm:gap-2 bg-gray-100 p-2 px-3 rounded-4xl">
                 <TbTriangleInvertedFilled />
-                <span>{product.change.pct}%</span>
+                <span>{formatPct(product.change.pct)}%</span>
               </span>
             )}
           </div>
